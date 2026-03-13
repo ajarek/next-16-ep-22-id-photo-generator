@@ -1,5 +1,6 @@
 import { Download, ImageIcon, Loader2, X } from 'lucide-react';
 import Image from 'next/image';
+import { toast } from 'sonner';
 
 interface ResultDisplayProps {
   generatedImage: string | null;
@@ -17,8 +18,8 @@ export function ResultDisplay({ generatedImage, loading, onClear }: ResultDispla
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
+    toast.success("Photo downloaded!", { description: "Your ID photo has been saved." })
 
-    // Auto-clear after download
     if (onClear) {
       setTimeout(() => onClear(), 1500);
     }
